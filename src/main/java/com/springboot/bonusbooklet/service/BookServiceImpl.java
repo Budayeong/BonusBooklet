@@ -33,6 +33,11 @@ public class BookServiceImpl implements BookService {
 	public void updateBook(BookDO bdo) {
 		bMapper.updateBook(bdo);
 	}
+
+	@Override
+	public void deleteBook(BookDO bdo) {
+		bMapper.deleteBook(bdo);
+	}
 	
 
 }

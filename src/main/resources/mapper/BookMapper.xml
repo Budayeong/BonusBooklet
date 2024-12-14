@@ -20,8 +20,13 @@
 	</select>
 	
 	<!-- 책 정보 수정 -->
-	<update id="updateBook" parameterType="bookDO">
+	<update id="updateBook" parameterType="BookDO">
 		update book set book_title = #{book_title}, author = #{author}, publisher = #{publisher}, genre = #{genre}, status = #{status}, book_image = #{book_image} where book_idx = #{book_idx}
 	</update>
+	
+	<!-- 책 정보 삭제 -->
+	<delete id="deleteBook" parameterType="BookDO">
+		delete from book where book_idx = #{book_idx}
+	</delete>
 
 </mapper>

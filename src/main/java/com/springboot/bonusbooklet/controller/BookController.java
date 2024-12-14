@@ -19,7 +19,7 @@ public class BookController {
 	@Autowired
 	BookServiceImpl bService;
 
-	
+	// 책 목록
 	@GetMapping(value="/getBookList.do")
 	public ModelAndView bookList(ModelAndView mav) {
 		mav.addObject("bookList", bService.getBookList());
@@ -28,6 +28,7 @@ public class BookController {
 		return mav;
 	}
 	
+	// 책 등록
 	@GetMapping(value="/insertBook.do")
 	public ModelAndView insertBookGet(ModelAndView mav) {
 		mav.setViewName("insertBook");
@@ -61,6 +62,7 @@ public class BookController {
 		return mav;
 	}
 	
+	// 책 수정
 	@GetMapping(value="/modifyBook.do")
 	public ModelAndView modifyBookGet(BookDO bdo, ModelAndView mav) {
 		mav.addObject("book", bService.getBook(bdo));
@@ -71,15 +73,12 @@ public class BookController {
 	@PostMapping(value="/modifyBook.do")
 	public ModelAndView modifyBookPost(BookDO bdo, ModelAndView mav, HttpServletRequest request) {
 		bdo.setStatus(Integer.parseInt(request.getParameter("status_val")));
-		
-		System.err.println(System.getProperty("user.dir"));
 
-		String uploadsDir="";
 		// 이미지 업로드
+		String uploadsDir="";
 		String book_image="";
 		try {
-//			uploadsDir = "C:/uploads";
-			uploadsDir = System.getProperty("user.dir")+"/src/main/resources/static/uploads";
+			uploadsDir = System.getProperty("user.dir")+"/target/classes/static/uploads";
 			String fileName = FileUtil.uploadFile(request, uploadsDir);
 			book_image = FileUtil.renameFile(uploadsDir, fileName);
 		}
@@ -91,12 +90,17 @@ public class BookController {
 		
 		bService.updateBook(bdo);
 		mav.setViewName("redirect:getBookList.do");
-		
-		System.err.println("Uploads Directory: " + uploadsDir);
-
-		
 		return mav;
 	}
+	
+	// 책 삭제
+	@GetMapping(value="/deleteBook.do")
+	public ModelAndView deleteBookGet(BookDO bdo, ModelAndView mav) {
+		bService.deleteBook(bdo);
+		mav.setViewName("redirect:getBookList.do");
+		return mav;
+	}
+	
 	
 	
 

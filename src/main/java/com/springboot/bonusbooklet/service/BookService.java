@@ -17,5 +17,8 @@ public interface BookService {
 	
 	// 책 수정
 	void updateBook(BookDO bdo);
+	
+	// 책 삭제
+	void deleteBook(BookDO bdo);
 		
 }

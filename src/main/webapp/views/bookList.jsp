@@ -75,6 +75,10 @@
 		        <c:if test="${book.status == 2}">
 		        	<td>완독</td>
 		        </c:if>
+		        <td>
+		        	<img src="/uploads/${book.book_image}" style="width: 450px; height: 450px; border-radius: 0;" />
+		        </td>
+		        
 
 		        <td>
 		            <button class="btn btn-primary" onclick="location.href='modifyBook.do?book_idx=${book.book_idx}'">Modify</button>
