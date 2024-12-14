@@ -25,8 +25,8 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public LogDO getLog(LogDO bdo) {
-		return lMapper.getLog(bdo);
+	public LogDO getLog(int log_idx) {
+		return lMapper.getLog(log_idx);
 	}
 
 	@Override

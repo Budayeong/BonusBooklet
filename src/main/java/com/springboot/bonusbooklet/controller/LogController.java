@@ -49,9 +49,6 @@ public class LogController {
 	
 	@PostMapping(value="/insertLog.do")
 	public ModelAndView insertLogPost(LogDO ldo, ModelAndView mav, HttpServletRequest request) {
-//		int book_ref = Integer.parseInt(request.getParameter("book_ref"));
-//		ldo.setBook_ref(book_ref);
-		
 		// 이미지 업로드
 		String uploadsDir="";
 		String log_image="";
@@ -68,6 +65,43 @@ public class LogController {
 		
 		lService.insertLog(ldo);
 		mav.setViewName("redirect:getLogList.do?book_ref="+ldo.getBook_ref());
+		return mav;
+	}
+	
+	// 독서기록 상세보기
+	@GetMapping(value="/viewLog.do")
+	public ModelAndView viewLog(LogDO ldo, ModelAndView mav) {
+		mav.addObject("log", lService.getLog(ldo.getLog_idx()));
+		mav.setViewName("log/viewLog");
+		return mav;
+	}
+	
+	// 독서기록 수정
+	@GetMapping(value="/editLog.do")
+	public ModelAndView editLogGet(LogDO ldo, ModelAndView mav) {
+		mav.addObject("log", lService.getLog(ldo.getLog_idx()));
+		mav.setViewName("log/editLog");
+		return mav;
+	}
+	
+	@PostMapping(value="/editLog.do")
+	public ModelAndView editLogPost(LogDO ldo, ModelAndView mav, HttpServletRequest request) {
+		// 이미지 업로드
+		String uploadsDir="";
+		String log_image="";
+		try {
+			uploadsDir = System.getProperty("user.dir")+"/target/classes/static/uploads";
+			String fileName = FileUtil.uploadFile(request, uploadsDir);
+			log_image = FileUtil.renameFile(uploadsDir, fileName);
+		}
+		catch (Exception e) {
+			System.err.println("파일 업로드 에러");
+			e.printStackTrace();
+		}
+		ldo.setLog_image(log_image);
+		
+		lService.updateLog(ldo);
+		mav.setViewName("redirect:viewLog.do?log_idx="+ldo.getLog_idx());
 		return mav;
 	}
 	

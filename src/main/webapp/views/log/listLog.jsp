@@ -52,7 +52,7 @@
 	         <c:forEach var="log" items="${logList}">
 	            <tr>
 	               <th scope="row">${log.log_idx}</th>
-	               <td><a href="getLogView.do?log_idx=${log.log_idx }" >${log.log_title}</a></td>
+	               <td><a href="viewLog.do?log_idx=${log.log_idx }" >${log.log_title}</a></td>
 	               <td>${log.date}</td>
 	               <td>${log.page} p</td>
                 </tr>

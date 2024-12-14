@@ -14,14 +14,14 @@
 		values (#{book_ref}, #{log_title}, #{date}, #{page}, #{chapter}, #{review}, #{log_image}, #{hashtag})
 	</insert>
 	
-	<!-- 책 한권 정보 -->
+	<!-- 독서기록 한개 정보 -->
 	<select id="getLog" resultType="LogDO">
-		select * from reading_log where book_idx = #{book_idx}
+		select * from reading_log where log_idx = #{log_idx}
 	</select>
 	
-	<!-- 책 정보 수정 -->
-	<update id="updateBook" parameterType="LogDO">
-		update reading_log set book_title = #{book_title}, author = #{author}, publisher = #{publisher}, genre = #{genre}, status = #{status}, book_image = #{book_image} where book_idx = #{book_idx}
+	<!-- 독서기록 정보 수정 -->
+	<update id="updateLog" parameterType="LogDO">
+		update reading_log set log_title = #{log_title}, date = #{date}, page = #{page}, chapter = #{chapter}, review = #{review}, log_image = #{log_image}, hashtag = #{hashtag} where log_idx = #{log_idx}
 	</update>
 	
 	<!-- 책 정보 삭제 -->

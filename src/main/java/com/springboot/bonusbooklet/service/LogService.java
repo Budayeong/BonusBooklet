@@ -14,7 +14,7 @@ public interface LogService {
 	void insertLog(LogDO ldo);
 	
 	// 독서기록 선택
-	LogDO getLog(LogDO ldo);
+	LogDO getLog(int log_idx);
 	
 	// 독서기록 수정
 	void updateLog(LogDO ldo);
