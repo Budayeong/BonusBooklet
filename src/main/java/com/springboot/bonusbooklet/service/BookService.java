@@ -20,5 +20,8 @@ public interface BookService {
 	
 	// 책 삭제
 	void deleteBook(BookDO bdo);
+	
+	// 책 검색
+	ArrayList<BookDO> searchBook(String searchCon, String searchKey);
 		
 }

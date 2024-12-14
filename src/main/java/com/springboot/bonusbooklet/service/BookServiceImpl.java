@@ -38,6 +38,10 @@ public class BookServiceImpl implements BookService {
 	public void deleteBook(BookDO bdo) {
 		bMapper.deleteBook(bdo);
 	}
-	
+
+	@Override
+	public ArrayList<BookDO> searchBook(String searchCon, String searchKey) {
+		return bMapper.searchBook(searchCon, searchKey);
+	}
 
 }

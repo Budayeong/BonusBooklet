@@ -22,77 +22,63 @@
    </style>
 </head>
 <body>
-    <!--<h2> insertBoard.jsp </h2>-->
    <div class="container my-container">
       <!--제목-->
-      <p class="fs-2 text-center">전체 책 리스트</p>
+      <p class="fs-2 text-center">별책부록</p>
+      	<p>나는 몇권의 책을 읽었을까</p>
           
-          <form class="d-flex" action="/searchBoardList.do" >
+          <form class="d-flex" action="/searchBook.do" >
           	<select name="searchCon" class="form-select" aria-label="Default select example">
-          		<option value="title"> 글제목 </option>
-          		<option value="content"> 글 내용 </option>
-          		<option value="writer"> 작성자 </option>
+          		<option value="book_title"> 책 제목 </option>
+          		<option value="author"> 저자 </option>
+          		<option value="publisher"> 출판사 </option>
+          		<option value="genre"> 장르 </option>
           	</select>
           	<input name="searchKey" class="form-control me-2" type="search" >
           	<button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-        <button class="btn btn-danger" onclick="location.href='insertBook.do'">등록</button>
+          
+          <button class="btn btn-danger" onclick="location.href='insertBook.do'">등록</button>
                
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#(번호)</th>
-            <th scope="col">제목</th>
-            <th scope="col">저자</th>
-            <th scope="col">출판사</th>
-            <th scope="col">장르</th>
-            <th scope="col">독서 상태</th>
-           <th scope="col">modify/delete</th>
-          </tr>
-        </thead>
-        <tbody>
-         
        
+       <!-- 수정사항 : 등록한 책이 없을때 디자인, 검색결과가 없을때, 독서상태 따라 정렬기능 -->
        	<c:if test="${empty bookList}">
-		    <tr>
-		        <td colspan="5">등록한 책이 없습니다.</td>
-		    </tr>
+			<p>등록한 책이 없습니다.</p>
 		</c:if>
 		
-		<c:forEach var="book" items="${bookList}">
-		    <tr>
-		        <th scope="row">${book.book_idx}</th>
-		        <td>${book.book_title}</td>
-		        <td>${book.author}</td>
-		        <td>${book.publisher}</td>
-		        <td>${book.genre}</td>
-		        <c:if test="${book.status == 0}">
-		        	<td>시작</td>
-		        </c:if>
-		        <c:if test="${book.status == 1}">
-		        	<td>독서 중</td>
-		        </c:if>
-		        <c:if test="${book.status == 2}">
-		        	<td>완독</td>
-		        </c:if>
-		        <td>
-		        	<img src="/uploads/${book.book_image}" style="width: 450px; height: 450px; border-radius: 0;" />
-		        </td>
-		        
+		<div class="container">
+		  <div class="row">
+		    <c:forEach var="book" items="${bookList}">
+		      <div class="col-md-4 mb-4">
+		        <div class="card" style="width: 100%;">
+		          <img src="/uploads/${book.book_image}" class="card-img-top" alt="...">
+		          <div class="card-body">
+		            <h5 class="card-title">${book.book_title}</h5>
+		            <p class="card-text">${book.author}</p>
+		            <p class="card-text">${book.publisher}</p>
+		            <p class="card-text">${book.genre}</p>
+		            <c:if test="${book.status == 0}">
+		              <p class="card-text">시작</p>
+		            </c:if>
+		            <c:if test="${book.status == 1}">
+		              <p class="card-text">독서 중</p>
+		            </c:if>
+		            <c:if test="${book.status == 2}">
+		              <p class="card-text">완독</p>
+		            </c:if>
+		            <a href="modifyBook.do?book_idx=${book.book_idx}" class="btn btn-primary">수정하기</a>
+		            <a href="deleteBook.do?book_idx=${book.book_idx}" class="btn btn-primary">삭제하기</a>
+		          </div>
+		        </div>
+		      </div>
+		    </c:forEach>
+		  </div>
+		</div>
 
-		        <td>
-		            <button class="btn btn-primary" onclick="location.href='modifyBook.do?book_idx=${book.book_idx}'">Modify</button>
-		            <button class="btn btn-danger" onclick="location.href='deleteBook.do?book_idx=${book.book_idx}'">Delete</button>
-		        </td>
-		    </tr>
-		</c:forEach>
 
         
         
          
-                 
-        </tbody>
-      </table>
    </div>
    
    

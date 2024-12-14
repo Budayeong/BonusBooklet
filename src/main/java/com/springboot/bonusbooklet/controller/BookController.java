@@ -11,6 +11,8 @@ import com.springboot.bonusbooklet.service.BookServiceImpl;
 import com.springboot.bonusbooklet.utils.FileUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -98,6 +100,17 @@ public class BookController {
 	public ModelAndView deleteBookGet(BookDO bdo, ModelAndView mav) {
 		bService.deleteBook(bdo);
 		mav.setViewName("redirect:getBookList.do");
+		return mav;
+	}
+	
+	// 책 검색
+	@GetMapping(value="/searchBook.do")
+	public ModelAndView searchBookGet(ModelAndView mav, HttpServletRequest requset) {
+		String searchCon = requset.getParameter("searchCon");
+		String searchKey = requset.getParameter("searchKey");
+		
+		mav.addObject("bookList", bService.searchBook(searchCon, searchKey));
+		mav.setViewName("bookList");
 		return mav;
 	}
 	
