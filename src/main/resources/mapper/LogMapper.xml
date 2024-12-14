@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.springboot.bonusbooklet.mapper.LogMapper">
+
+	<!-- 독서기록 목록  -->
+	<select id="getLogList" resultType="LogDO">
+		select * from reading_log where book_ref = #{book_ref}
+	</select>
+	
+	<!-- 독서기록 입력 -->
+	<insert id="insertLog" parameterType="LogDO">
+		insert reading_log (book_ref, log_title, date, page, chapter, review, log_image, hashtag)
+		values (#{book_ref}, #{log_title}, #{date}, #{page}, #{chapter}, #{review}, #{log_image}, #{hashtag})
+	</insert>
+	
+	<!-- 책 한권 정보 -->
+	<select id="getLog" resultType="LogDO">
+		select * from reading_log where book_idx = #{book_idx}
+	</select>
+	
+	<!-- 책 정보 수정 -->
+	<update id="updateBook" parameterType="LogDO">
+		update reading_log set book_title = #{book_title}, author = #{author}, publisher = #{publisher}, genre = #{genre}, status = #{status}, book_image = #{book_image} where book_idx = #{book_idx}
+	</update>
+	
+	<!-- 책 정보 삭제 -->
+	<delete id="deleteBook" parameterType="LogDO">
+		delete from reading_log where book_idx = #{book_idx}
+	</delete>
+	
+	<!-- 책 정보 검색 -->
+	<select id="searchBook" resultType="LogDO">
+		select * from reading_log where
+			<if test="searchCon == 'book_title'">
+			    book_title
+			</if>
+			<if test="searchCon == 'author'">
+			    author
+			</if>
+			<if test="searchCon == 'publisher'">
+			    publisher
+			</if>
+			<if test="searchCon == 'genre'">
+			    genre
+			</if>
+		like '%' #{searchKey} '%'  
+	</select>
+	
+</mapper>

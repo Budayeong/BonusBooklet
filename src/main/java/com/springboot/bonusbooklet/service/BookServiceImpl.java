@@ -25,8 +25,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public BookDO getBook(BookDO bdo) {
-		return bMapper.getBook(bdo);
+	public BookDO getBook(int book_idx) {
+		return bMapper.getBook(book_idx);
 	}
 
 	@Override

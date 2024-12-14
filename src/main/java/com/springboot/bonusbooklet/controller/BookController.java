@@ -25,7 +25,7 @@ public class BookController {
 	@GetMapping(value="/getBookList.do")
 	public ModelAndView bookList(ModelAndView mav) {
 		mav.addObject("bookList", bService.getBookList());
-		mav.setViewName("bookList");
+		mav.setViewName("book/listBook");
 		
 		return mav;
 	}
@@ -33,7 +33,7 @@ public class BookController {
 	// 책 등록
 	@GetMapping(value="/insertBook.do")
 	public ModelAndView insertBookGet(ModelAndView mav) {
-		mav.setViewName("insertBook");
+		mav.setViewName("book/insertBook");
 		return mav;
 	}
 	
@@ -57,23 +57,19 @@ public class BookController {
 		
 		bService.insertBook(bdo);
 		mav.setViewName("redirect:getBookList.do");
-		
-		System.err.println("Uploads Directory: " + uploadsDir);
-		
-		
 		return mav;
 	}
 	
 	// 책 수정
-	@GetMapping(value="/modifyBook.do")
-	public ModelAndView modifyBookGet(BookDO bdo, ModelAndView mav) {
-		mav.addObject("book", bService.getBook(bdo));
-		mav.setViewName("modifyBook");
+	@GetMapping(value="/editBook.do")
+	public ModelAndView editBookGet(BookDO bdo, ModelAndView mav) {
+		mav.addObject("book", bService.getBook(bdo.getBook_idx()));
+		mav.setViewName("book/editBook");
 		return mav;
 	}
 	
-	@PostMapping(value="/modifyBook.do")
-	public ModelAndView modifyBookPost(BookDO bdo, ModelAndView mav, HttpServletRequest request) {
+	@PostMapping(value="/editBook.do")
+	public ModelAndView editBookPost(BookDO bdo, ModelAndView mav, HttpServletRequest request) {
 		bdo.setStatus(Integer.parseInt(request.getParameter("status_val")));
 
 		// 이미지 업로드
@@ -110,7 +106,7 @@ public class BookController {
 		String searchKey = requset.getParameter("searchKey");
 		
 		mav.addObject("bookList", bService.searchBook(searchCon, searchKey));
-		mav.setViewName("bookList");
+		mav.setViewName("book/listBook");
 		return mav;
 	}
 	

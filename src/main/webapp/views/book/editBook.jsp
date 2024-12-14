@@ -31,7 +31,7 @@
 		<!-- 제목 -->
 		<p class="fs-2 text-center"> 책 정보 수정 </p>
 		
-		<form action="/modifyBook.do" method="post" enctype="multipart/form-data">		  
+		<form action="/editBook.do" method="post" enctype="multipart/form-data">		  
 		  <div class="mb-3">
 		  	<input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="book_idx" value="${book.book_idx}">
 		    <label for="exampleInputEmail1" class="form-label">책 제목</label>

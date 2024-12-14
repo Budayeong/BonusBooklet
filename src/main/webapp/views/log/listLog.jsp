@@ -38,49 +38,30 @@
           	<button class="btn btn-outline-success" type="submit">Search</button>
           </form>
           
-          <button class="btn btn-danger" onclick="location.href='insertBook.do'">등록</button>
+          <button class="btn btn-danger" onclick="location.href='insertLog.do?book_ref=${book.book_idx}'">등록</button>
                
-       
-       <!-- 수정사항 : 등록한 책이 없을때 디자인, 검색결과가 없을때, 독서상태 따라 정렬기능 -->
-       	<c:if test="${empty bookList}">
+        <p class="fs-2 text-center">${book.book_title}</p>
+        <!-- 수정사항 : 등록한 독서기록이 없을때 디자인, 검색결과가 없을때, 별점, 최신 순 등 정렬 기능 -->
+       	<c:if test="${empty logList}">
 			<p>등록한 책이 없습니다.</p>
 		</c:if>
 		
 		<div class="container">
-		  <div class="row">
-		    <c:forEach var="book" items="${bookList}">
-		      <div class="col-md-4 mb-4">
-		        <div class="card" style="width: 100%;">
-		          <img src="/uploads/${book.book_image}" class="card-img-top" alt="...">
-		          <div class="card-body">
-		            <h5 class="card-title">${book.book_title}</h5>
-		            <p class="card-text">${book.author}</p>
-		            <p class="card-text">${book.publisher}</p>
-		            <p class="card-text">${book.genre}</p>
-		            <c:if test="${book.status == 0}">
-		              <p class="card-text">시작</p>
-		            </c:if>
-		            <c:if test="${book.status == 1}">
-		              <p class="card-text">독서 중</p>
-		            </c:if>
-		            <c:if test="${book.status == 2}">
-		              <p class="card-text">완독</p>
-		            </c:if>
-		            <a href="modifyBook.do?book_idx=${book.book_idx}" class="btn btn-primary">수정하기</a>
-		            <a href="deleteBook.do?book_idx=${book.book_idx}" class="btn btn-primary">삭제하기</a>
-		          </div>
-		        </div>
-		      </div>
-		    </c:forEach>
-		  </div>
+		  <table class="table table-hover">
+	        <tbody>
+	         <c:forEach var="log" items="${logList}">
+	            <tr>
+	               <th scope="row">${log.log_idx}</th>
+	               <td><a href="getLogView.do?log_idx=${log.log_idx }" >${log.log_title}</a></td>
+	               <td>${log.date}</td>
+	               <td>${log.page} p</td>
+                </tr>
+	         </c:forEach>
+	        </tbody>
+	      </table>
 		</div>
 
-
-        
-        
-         
    </div>
-   
    
 </body>
 </html>

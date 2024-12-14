@@ -12,8 +12,8 @@ public interface BookService {
 	// 책 저장
 	void insertBook(BookDO bdo);
 
-	// 책 선택
-	BookDO getBook(BookDO bdo);
+	// 책 한권 선택
+	BookDO getBook(int book_idx);
 	
 	// 책 수정
 	void updateBook(BookDO bdo);
