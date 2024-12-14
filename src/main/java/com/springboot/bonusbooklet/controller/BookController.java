@@ -2,6 +2,7 @@ package com.springboot.bonusbooklet.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,7 @@ public class BookController {
 	@GetMapping(value="/getBookList.do")
 	public ModelAndView bookList(ModelAndView mav) {
 		mav.addObject("bookList", bService.getBookList());
-		mav.setViewName("book/listBook");
+		mav.setViewName("listBook");
 		
 		return mav;
 	}
@@ -45,7 +46,7 @@ public class BookController {
 		String uploadsDir="";
 		String book_image="";
 		try {
-			uploadsDir = System.getProperty("user.dir")+"/target/classes/static/uploads";
+			uploadsDir = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
 			String fileName = FileUtil.uploadFile(request, uploadsDir);
 			book_image = FileUtil.renameFile(uploadsDir, fileName);
 		}
@@ -76,7 +77,7 @@ public class BookController {
 		String uploadsDir="";
 		String book_image="";
 		try {
-			uploadsDir = System.getProperty("user.dir")+"/target/classes/static/uploads";
+			uploadsDir = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
 			String fileName = FileUtil.uploadFile(request, uploadsDir);
 			book_image = FileUtil.renameFile(uploadsDir, fileName);
 		}

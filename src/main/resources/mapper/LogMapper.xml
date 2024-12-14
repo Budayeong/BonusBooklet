@@ -24,9 +24,9 @@
 		update reading_log set log_title = #{log_title}, date = #{date}, page = #{page}, chapter = #{chapter}, review = #{review}, log_image = #{log_image}, hashtag = #{hashtag} where log_idx = #{log_idx}
 	</update>
 	
-	<!-- 책 정보 삭제 -->
-	<delete id="deleteBook" parameterType="LogDO">
-		delete from reading_log where book_idx = #{book_idx}
+	<!-- 독서기록 정보 삭제 -->
+	<delete id="deleteLog" parameterType="LogDO">
+		delete from reading_log where log_idx = #{log_idx}
 	</delete>
 	
 	<!-- 책 정보 검색 -->

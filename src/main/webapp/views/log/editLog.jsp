@@ -31,7 +31,6 @@
 		<!-- 제목 -->
 		<p class="fs-2 text-center"> 독서기록 수정 </p>
 		
-<%-- 		<form action="/insertLog.do?book_ref=${book_ref }" method="post" enctype="multipart/form-data">		   --%>
 		<form action="/editLog.do" method="post" enctype="multipart/form-data">		  
 		  <input type="hi-ddeb" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="log_idx" value="${log.log_idx }">
 		  <div class="mb-3">

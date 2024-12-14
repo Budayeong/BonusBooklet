@@ -32,8 +32,6 @@ public class FileUtil {
 		Part 인스턴스에서 헤더값을 통해 원본 파일명을 얻어옴. (차후 콘솔에서 확인)
 		*/
 		String partHeader = part.getHeader("content-disposition");
-		System.out.println("partHeader=" + partHeader);
-		
 		/*
 		헤더값을 통해 얻어온 문자열에서 "filename="을 구분자로 split함.
 		그러면 String 타입의 배열로 반환됨. 

@@ -2,6 +2,7 @@ package com.springboot.bonusbooklet.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,7 +54,7 @@ public class LogController {
 		String uploadsDir="";
 		String log_image="";
 		try {
-			uploadsDir = System.getProperty("user.dir")+"/target/classes/static/uploads";
+			uploadsDir = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
 			String fileName = FileUtil.uploadFile(request, uploadsDir);
 			log_image = FileUtil.renameFile(uploadsDir, fileName);
 		}
@@ -90,7 +91,7 @@ public class LogController {
 		String uploadsDir="";
 		String log_image="";
 		try {
-			uploadsDir = System.getProperty("user.dir")+"/target/classes/static/uploads";
+			uploadsDir = ResourceUtils.getFile("classpath:static/uploads/").toPath().toString();
 			String fileName = FileUtil.uploadFile(request, uploadsDir);
 			log_image = FileUtil.renameFile(uploadsDir, fileName);
 		}
@@ -102,6 +103,16 @@ public class LogController {
 		
 		lService.updateLog(ldo);
 		mav.setViewName("redirect:viewLog.do?log_idx="+ldo.getLog_idx());
+		return mav;
+	}
+	
+	// 독서기록 삭제
+	@GetMapping(value="/deleteLog.do")
+	public ModelAndView deleteLogGet(LogDO ldo, ModelAndView mav) {
+		int book_ref = ldo.getBook_ref();
+		System.err.println(book_ref);
+		lService.deleteLog(ldo);
+		mav.setViewName("redirect:getLogList.do?book_ref="+book_ref);
 		return mav;
 	}
 	

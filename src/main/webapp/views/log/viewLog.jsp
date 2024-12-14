@@ -60,7 +60,7 @@
 		 
 		  <div class="d-grid gap-2 d-md-flex justify-content-md-end">			 		
 			  <a href="editLog.do?log_idx=${log.log_idx}" class="btn btn-primary">수정하기</a>
-              <a href="deleteLog.do?log_idx=${log.log_idx}" class="btn btn-primary">삭제하기</a>
+              <a href="deleteLog.do?log_idx=${log.log_idx}&book_ref=${log.book_ref}" class="btn btn-primary">삭제하기</a>
 		  </div>	  
 		
 	</div>
