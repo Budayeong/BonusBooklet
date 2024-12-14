@@ -75,7 +75,7 @@
 		        <c:if test="${book.status == 2}">
 		        	<td>완독</td>
 		        </c:if>
-		        
+
 		        <td>
 		            <button class="btn btn-primary" onclick="location.href='modifyBook.do?book_idx=${book.book_idx}'">Modify</button>
 		            <button class="btn btn-danger" onclick="location.href='deleteBook.do?book_idx=${book.book_idx}'">Delete</button>

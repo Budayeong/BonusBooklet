@@ -39,9 +39,10 @@ public class BookController {
 		bdo.setStatus(Integer.parseInt(request.getParameter("status_val")));
 	
 		// 이미지 업로드
+		String uploadsDir="";
 		String book_image="";
 		try {
-			String uploadsDir = "C:/uploads"; 
+			uploadsDir = System.getProperty("user.dir")+"/target/classes/static/uploads";
 			String fileName = FileUtil.uploadFile(request, uploadsDir);
 			book_image = FileUtil.renameFile(uploadsDir, fileName);
 		}
@@ -53,6 +54,10 @@ public class BookController {
 		
 		bService.insertBook(bdo);
 		mav.setViewName("redirect:getBookList.do");
+		
+		System.err.println("Uploads Directory: " + uploadsDir);
+		
+		
 		return mav;
 	}
 	
@@ -67,10 +72,14 @@ public class BookController {
 	public ModelAndView modifyBookPost(BookDO bdo, ModelAndView mav, HttpServletRequest request) {
 		bdo.setStatus(Integer.parseInt(request.getParameter("status_val")));
 		
+		System.err.println(System.getProperty("user.dir"));
+
+		String uploadsDir="";
 		// 이미지 업로드
 		String book_image="";
 		try {
-			String uploadsDir = "C:/uploads"; 
+//			uploadsDir = "C:/uploads";
+			uploadsDir = System.getProperty("user.dir")+"/src/main/resources/static/uploads";
 			String fileName = FileUtil.uploadFile(request, uploadsDir);
 			book_image = FileUtil.renameFile(uploadsDir, fileName);
 		}
@@ -82,6 +91,10 @@ public class BookController {
 		
 		bService.updateBook(bdo);
 		mav.setViewName("redirect:getBookList.do");
+		
+		System.err.println("Uploads Directory: " + uploadsDir);
+
+		
 		return mav;
 	}
 	

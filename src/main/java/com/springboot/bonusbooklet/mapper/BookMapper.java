@@ -20,5 +20,5 @@ public interface BookMapper {
 	
 	// 책 수정
 	void updateBook(BookDO bdo);
-	
+		
 }

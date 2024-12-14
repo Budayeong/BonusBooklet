@@ -62,11 +62,15 @@
 		  	<label for="exampleInputEmail1" class="form-label">이미지</label>
 		  	<input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="file">		    
   		  </div>
+		<img src="/uploads/${book.book_image}" style="width: 450px; height: 450px; border-radius: 0;" />
+		
+		
 		 
 		  <div class="d-grid gap-2 d-md-flex justify-content-md-end">			 		
 			  <button type="submit" class="btn btn-primary">Submit</button>
 			  <button type="reset" class="btn btn-danger">Reset</button>
-		  </div>	  
+		  </div>	 
+		   
 		</form>
 		
 	</div>
