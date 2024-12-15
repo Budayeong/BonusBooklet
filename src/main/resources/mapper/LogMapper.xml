@@ -5,7 +5,7 @@
 
 	<!-- 독서기록 목록  -->
 	<select id="getLogList" resultType="LogDO">
-		select * from reading_log where book_ref = #{book_ref}
+		select * from reading_log where book_ref = #{book_ref} order by log_idx desc
 	</select>
 	
 	<!-- 독서기록 입력 -->

@@ -1,0 +1,30 @@
+.container {
+  padding: 170px 0;
+}
+.container .content_inner {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.list_area {
+  margin-top: 10px;
+}
+
+.list_area .board_option {
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝으로 정렬 */
+  align-items: center; /* 세로 정렬 */
+}
+
+.board_option form {
+  display: flex;
+  align-items: center; /* 세로 정렬 */
+}
+
+.board_option button {
+  margin-left: 10px; /* 버튼과 폼 사이에 간격 추가 */
+}
+
+.table {
+    border-top: 2px solid #000; /* 원하는 두께와 색으로 변경 */
+}

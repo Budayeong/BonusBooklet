@@ -1,0 +1,101 @@
+.container {
+  padding: 170px 0;
+}
+.container .content_inner {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.board_area {
+  margin-top: 10px;
+}
+
+.board_area .board_title {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 0;
+}
+
+.board_area .board_title p {
+    display: block;
+    font-size: 36px;
+    color: #111111;
+    line-height: 44px;
+    font-weight: 600;
+}
+
+.board_area .board_info p{
+    font-size: 15px;
+    text-align: center;
+}
+
+/* 게시판 테이블 */
+.board_area table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.board_area table th {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.board_area table td {
+    border: 1px solid #ddd;
+    padding: 30px 50px 30px 50px;
+    text-align: left;
+}
+
+
+.board_area table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #555;
+}
+
+.board_area table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+.board_area table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* 게시판 버튼 */
+.board_btn_area {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: relative; 
+    margin-top: 20px;
+}
+
+.board_btn {
+    text-align: center;
+}
+
+.board_btn_right {
+    position: absolute;
+    right: 0; 
+    display: flex;
+    gap: 10px; 
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn-edit {
+    color: #fff;
+    background-color: #69a6a2;
+    border-color: #69a6a2;
+}
+
+.btn-delete {
+    color: #fff;
+    background-color: #ca7f76;
+    border-color: #ca7f76;
+}
