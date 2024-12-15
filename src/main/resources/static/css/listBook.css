@@ -1,9 +1,18 @@
 .container {
-	padding: 170px 0;
+	padding: 100px 0;
 }
 .container .content_inner {
 	max-width: 1170px;
 	margin: 0 auto;
+}
+
+.index_txt {
+	margin-bottom:50px;
+}
+
+.title_txt {
+	text-align: center;
+    margin-top: 20px;      
 }
 
 .list_area {

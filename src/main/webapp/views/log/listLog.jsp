@@ -21,13 +21,14 @@
         <!-- 게시판 -->
 		<div class="list_area">
 		
+			<!-- 수정사항: Log 검색 수정 필요 -->
 			<!-- 검색 / 글쓰기 -->	
 			<div class="board_option">
 				<div >
-					<form action="/searchBook.do"  class="search_box">
+					<form action="/searchLog.do"  class="search_box">
 						<select name="searchCon" class="search-select" aria-label="Default select example">
-							<option value="book_title"> 책 제목 </option>
-							<option value="author"> 저자 </option>
+							<option value="log_title">제목 </option>
+							<option value="hashtag"> 해시태그 </option>
 							<option value="publisher"> 출판사 </option>
 							<option value="genre"> 장르 </option>
 						</select>

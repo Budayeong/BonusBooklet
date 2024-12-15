@@ -14,9 +14,11 @@
 </head>
 <body>
    <div class="container">
-    
-                <p class="fs-2 text-center">별책부록</p>
-                <p>나는 몇권의 책을 읽었을까</p>
+   	
+    			<div class="index_txt">
+	                <p class="fs-2 text-center">별책부록</p>
+	                <p class="title_txt">나는 몇권의 책을 읽었을까</p>
+    			</div>
 
                 <div class="list_area">
                 
