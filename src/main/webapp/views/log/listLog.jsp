@@ -23,25 +23,28 @@
 		
 			<!-- 검색 / 글쓰기 -->	
 			<div class="board_option">
-				<div>
-					<form class="d-flex" action="/searchBook.do" >
-						<select name="searchCon" class="form-select" aria-label="Default select example">
+				<div >
+					<form action="/searchBook.do"  class="search_box">
+						<select name="searchCon" class="search-select" aria-label="Default select example">
 							<option value="book_title"> 책 제목 </option>
 							<option value="author"> 저자 </option>
 							<option value="publisher"> 출판사 </option>
 							<option value="genre"> 장르 </option>
 						</select>
-						<input name="searchKey" class="form-control me-2" type="search" >
-						<button class="btn btn-outline-success" type="submit">Search</button>
+						<div class="input_box">
+							<input name="searchKey"  type="search" >
+							<button class="btn_search" type="submit"></button>
+						</div>
 					</form>
 				</div>
-				<div>
-					<button class="btn btn-danger" onclick="location.href='insertLog.do?book_ref=${book.book_idx}'">등록</button>
+				<div class="write_btn">
+					<a href="insertLog.do?book_ref=${book.book_idx}">✏️독서기록 쓰기</a>
 				</div>
 			</div>
+			
+			
         
 	        <!-- 수정사항 : 등록한 독서기록이 없을때 디자인, 검색결과가 없을때, 별점, 최신 순 등 정렬 기능 -->
-	        
 	        <!-- 게시판 -->
 	       	<c:if test="${empty logList}">
 				<p>등록한 책이 없습니다.</p>
@@ -51,7 +54,7 @@
 					<c:forEach var="log" items="${logList}">
 						<tr>
 					        <th scope="row">${log.log_idx}</th>
-					        <td><a href="viewLog.do?log_idx=${log.log_idx }" >${log.log_title}</a></td>
+					        <td><a href="viewLog.do?log_idx=${log.log_idx }" class="log_title" >${log.log_title}</a></td>
 					        <td>${log.date}</td>
 					        <td>${log.page} p</td>
 					        <td>${log.hashtag}</td>

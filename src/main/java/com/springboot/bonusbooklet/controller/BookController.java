@@ -26,7 +26,7 @@ public class BookController {
 	@GetMapping(value="/getBookList.do")
 	public ModelAndView bookList(ModelAndView mav) {
 		mav.addObject("bookList", bService.getBookList());
-		mav.setViewName("listBook");
+		mav.setViewName("book/listBook");
 		
 		return mav;
 	}
